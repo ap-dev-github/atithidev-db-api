@@ -6,7 +6,7 @@ provider:
   memorySize: 128
   timeout: 30
   environment:
-    MONGO_URI: ${param:MONGO_URI}
+    MONGO_URI: ${env:MONGO_URI}
 
 functions:
   api:
