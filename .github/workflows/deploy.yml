@@ -18,11 +18,8 @@ jobs:
         with:
           node-version: 18  
 
-      - name: Install dependencies (Fix peer dependency conflicts)
-        run: npm install --legacy-peer-deps
-
-      - name: Install AWS SDK (Ensure v3 is Installed)
-        run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda
+      - name: Install npm
+        run: npm install 
 
       - name: Configure AWS Credentials from Environment Variables
         run: |
