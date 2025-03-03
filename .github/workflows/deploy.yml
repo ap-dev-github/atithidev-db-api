@@ -20,15 +20,16 @@ jobs:
 
       - name: Install all dependencies (including devDependencies for ESLint)
         run: npm install
-        
-      - name: Install AWS SDK
-        run: npm install aws-sdk
+
 
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
 
       - name: Install only production dependencies
         run: npm ci --only=production  # Ensures only production dependencies are deployed
+
+      - name: Install Serverless Framework v3.4
+        run: npm install -g serverless@3.4
 
       - name: Set SERVERLESS_ACCESS_KEY
         run: echo "SERVERLESS_ACCESS_KEY=${{ secrets.SERVERLESS_ACCESS_KEY }}" >> $GITHUB_ENV
