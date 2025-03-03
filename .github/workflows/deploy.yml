@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: us-east-1  # You can centralize the region here
   SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-  ONGO_URI: ${{ secrets.MONGO_URI }}
+  MONGO_URI: ${{ secrets.MONGO_URI }}
 
 permissions:
   id-token: write
