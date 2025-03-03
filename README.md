@@ -76,3 +76,7 @@ This will deploy the API to AWS.
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Created & Maintained By  
+
+[Ayush Pandey](https://www.linkedin.com/in/linkedap/) | Contact: [ayushpandey.cs@gmail.com]
+
