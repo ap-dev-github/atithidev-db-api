@@ -46,9 +46,12 @@ jobs:
 
       - name: Install Serverless Framework globally
         run: npm install -g serverless
-
+        
+      - name: Serverless Login
+        run: npx serverless login --debug
+        
       - name: Deploy with Serverless
-        run: npx serverless deploy
+        run: npx serverless deploy --debug
         env:
           SERVERLESS_ACCESS_KEY: ${{ env.SERVERLESS_ACCESS_KEY }} 
           MONGO_URI: ${{ env.MONGO_URI }}  
