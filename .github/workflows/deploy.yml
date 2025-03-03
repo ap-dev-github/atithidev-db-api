@@ -21,19 +21,8 @@ jobs:
         with:
           node-version: 18  
 
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Install all dependencies (including devDependencies for ESLint)
         run: npm install
-
-      - name: Install AWS SDK (Ensure v3 is Installed)
-        run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda  
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2  # Check if v4 works better
