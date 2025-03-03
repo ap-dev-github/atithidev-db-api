@@ -31,12 +31,16 @@ jobs:
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
 
+      - name: Install AWS SDK (Ensure v3 is Installed)
+        run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda
+
       - name: Install only production dependencies
-        run: npm ci --only=production  # Ensures only production dependencies are deployed
-        
+        run: npm ci --only=production  # only production dependencies are deployed
+
       - name: Deploy with Serverless
         run: npx serverless deploy 
         env:
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
+
           
