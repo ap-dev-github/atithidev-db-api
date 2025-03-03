@@ -20,6 +20,9 @@ jobs:
 
       - name: Install all dependencies (including devDependencies for ESLint)
         run: npm install
+        
+      - name: Install AWS SDK
+        run: npm install aws-sdk
 
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
