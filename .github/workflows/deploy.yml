@@ -27,6 +27,9 @@ jobs:
       - name: Install only production dependencies
         run: npm ci --only=production  # Ensures only production dependencies are deployed
 
+      - name: Installing the new Serverless
+        run: npm install -g serverless
+        
       - name: Deploy with Serverless
         run: npx serverless deploy --debug
         env:
