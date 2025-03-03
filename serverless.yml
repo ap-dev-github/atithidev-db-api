@@ -1,0 +1,29 @@
+service: mongoose-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 128
+  timeout: 30
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - http:
+          path: /
+          method: get
+      - http:
+          path: fetchHosts
+          method: get
+      - http:
+          path: fetchHosts/{state}
+          method: get
+      - http:
+          path: fetchHost/{id}
+          method: get
+      - http:
+          path: insert_review
+          method: post
