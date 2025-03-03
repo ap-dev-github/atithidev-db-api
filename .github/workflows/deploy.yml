@@ -7,10 +7,11 @@ on:
 
 env:
   AWS_REGION: us-east-1  # You can centralize the region here
-  
+
 permissions:
-      id-token: write   
-      contents: read 
+  id-token: write
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -30,12 +31,12 @@ jobs:
       - name: Install AWS SDK (Ensure v3 is Installed)
         run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v3  # This is the key action
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1  # Use your desired AWS region
+      - name: Configure AWS Credentials from Environment Variables
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          echo "AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }}" >> $GITHUB_ENV  # Include this if you're using session tokens
+          echo "AWS_REGION=${{ env.AWS_REGION }}" >> $GITHUB_ENV
 
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
@@ -47,10 +48,9 @@ jobs:
         run: npm install -g serverless
 
       - name: Deploy with Serverless
-        run: npx serverless deploy 
+        run: npx serverless deploy
         env:
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
-
 
           
