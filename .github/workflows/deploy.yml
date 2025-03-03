@@ -43,6 +43,7 @@ jobs:
       - name: Deploy with Serverless
         env:
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-          MONGO_URI: ${{ secrets.MONGO_URI }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}  # Pass MONGO_URI as an environment variable
         run: |
-          serverless deploy   
+          echo "MONGO_URI is set to $MONGO_URI"  # Debugging: Print the MONGO_URI value
+          serverless deploy --verbose  
