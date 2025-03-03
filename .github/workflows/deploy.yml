@@ -47,9 +47,6 @@ jobs:
 
       - name: Install only production dependencies
         run: npm ci --only=production  # only production dependencies are deployed
-
-      - name: Install Serverless Framework (Using Compatible Version)
-        run: npm install -g serverless@3.40.0
   
 
       - name: Deploy with Serverless
