@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 18  
 
-      - name: Install all dependencies (including devDependencies for ESLint)
-        run: npm install
+      - name: Install dependencies (Fix peer dependency conflicts)
+        run: npm install --legacy-peer-deps
 
       - name: Install AWS SDK (Ensure v3 is Installed)
         run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda
@@ -28,8 +28,7 @@ jobs:
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }}" >> $GITHUB_ENV  # Include this if you're using session tokens
-          echo "AWS_REGION=${{ env.AWS_REGION }}" >> $GITHUB_ENV
+          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV
 
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
@@ -37,18 +36,18 @@ jobs:
       - name: Install only production dependencies
         run: npm ci --only=production  # only production dependencies are deployed
 
-      - name: Install Serverless Framework and dotenv plugin
-        run: |
-          npm install -g serverless@3.4
-          npm install serverless-dotenv-plugin
+      - name: Install Serverless Framework (Using Compatible Version)
+        run: npm install -g serverless@3.40.0
 
       - name: Create .env file
         run: |
           echo "MONGO_URI=${{ secrets.MONGO_URI }}" > .env     
-        
+
       - name: Deploy with Serverless
         env:
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           echo "MONGO_URI is set to $MONGO_URI"  # Debugging: Print the MONGO_URI value
-          serverless deploy --verbose  
+          serverless deploy --verbose
+
