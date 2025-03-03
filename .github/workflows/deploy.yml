@@ -41,10 +41,7 @@ jobs:
         run: npm install -g serverless@3.4
         
       - name: Deploy with Serverless
+        env:
+          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         run: |
-         serverless deploy --param = 'MONGO_URI = ${{ secrets.MONGO_URI }}'
-         env:
-         SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-       
-
-          
+          serverless deploy --param='MONGO_URI=${{ secrets.MONGO_URI }}'   
