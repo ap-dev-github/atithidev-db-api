@@ -22,19 +22,11 @@ jobs:
         run: npm install  
 
 
-      - name: Create .env file
-        run: |
-          echo "MONGO_URI=${{ secrets.MONGO_URI }}" > .env
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> .env
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> .env
-          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> .env
-    
-      - name: Set Environment Variables
-        run: |
-        env:
-          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-          
+      - name: Setting up Variables
+        env: 
+           MONGO_URI: ${{ secrets.MONGO_URI }}
+           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+  
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
