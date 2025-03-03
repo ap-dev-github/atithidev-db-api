@@ -36,11 +36,11 @@ jobs:
         run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda  
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4  # Check if v4 works better
+        uses: aws-actions/configure-aws-credentials@v2  # Check if v4 works better
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}  
+          aws-region: us-east-1  
 
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
