@@ -19,20 +19,19 @@ jobs:
           node-version: 18  
 
       - name: Install npm
-        run: npm install 
-
-      - name: Create .env file
+        run: npm install   
+      - name: Set Environment Variables
         run: |
-          echo "MONGO_URI=${{ secrets.MONGO_URI }}" > .env
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> .env
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> .env
-          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> .env     
-
-      - name: Configure AWS Credentials from Environment Variables
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV
+        env:
+          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
@@ -45,9 +44,7 @@ jobs:
   
 
       - name: Deploy with Serverless
-        env:
-          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-          MONGO_URI: ${{ secrets.MONGO_URI }}
+         
         run: |
           echo "MONGO_URI is set to $MONGO_URI"  # Debugging: Print the MONGO_URI value
           serverless deploy --verbose
