@@ -30,10 +30,6 @@ jobs:
 
       - name: Install Serverless Framework v3.4
         run: npm install -g serverless@3.4
-
-      - name: Set SERVERLESS_ACCESS_KEY
-        run: echo "SERVERLESS_ACCESS_KEY=${{ secrets.SERVERLESS_ACCESS_KEY }}" >> $GITHUB_ENV
-
         
       - name: Deploy with Serverless
         run: npx serverless deploy 
