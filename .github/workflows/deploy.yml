@@ -47,4 +47,3 @@ jobs:
         run: |
           echo "MONGO_URI is set to $MONGO_URI"  # Debugging: Print the MONGO_URI value
           serverless deploy --verbose
-
