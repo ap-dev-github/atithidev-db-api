@@ -7,7 +7,10 @@ on:
 
 env:
   AWS_REGION: us-east-1  # You can centralize the region here
-
+  
+permissions:
+      id-token: write   
+      contents: read 
 jobs:
   deploy:
     runs-on: ubuntu-latest
