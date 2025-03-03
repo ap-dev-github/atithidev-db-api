@@ -21,6 +21,9 @@ jobs:
       - name: Install all dependencies (including devDependencies for ESLint)
         run: npm install
 
+      - name: Install AWS SDK (Ensure v3 is Installed)
+        run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda  
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -30,9 +33,6 @@ jobs:
 
       - name: Run ESLint to check code quality
         run: npx eslint .  # Stops the deployment if there are linting errors
-
-      - name: Install AWS SDK (Ensure v3 is Installed)
-        run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda
 
       - name: Install only production dependencies
         run: npm ci --only=production  # only production dependencies are deployed
