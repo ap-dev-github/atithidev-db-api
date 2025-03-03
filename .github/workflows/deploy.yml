@@ -28,6 +28,9 @@ jobs:
       - name: Install all dependencies (including devDependencies for ESLint)
         run: npm install
 
+      - name: Install Serverless Framework v3.4
+        run: npm install -g serverless@3.4   
+
       - name: Install AWS SDK (Ensure v3 is Installed)
         run: npm install @aws-sdk/client-s3 @aws-sdk/client-dynamodb @aws-sdk/client-lambda
 
