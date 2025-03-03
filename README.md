@@ -20,8 +20,8 @@ This is a **Serverless AWS Lambda Function-based API** for the **Atithidev Websi
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+https://github.com/ap-dev-github/atithidev-mongoose-api.git
+cd atithidev-mongoose-api
 ```
 
 ### 2. Install Dependencies
