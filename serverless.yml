@@ -7,6 +7,9 @@ provider:
   timeout: 30
   environment:
     MONGO_URI: ${env:MONGO_URI}
+    
+package:
+  artifact: my_lambda.zip  
 
 functions:
   api:
