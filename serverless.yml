@@ -7,7 +7,7 @@ provider:
   timeout: 30
   environment:
     MONGO_URI: ${env:MONGO_URI}
-    
+
 package:
   artifact: my_lambda.zip  
 
@@ -29,4 +29,12 @@ functions:
           method: get
       - http:
           path: insert_review
-          method: post
+          method: post  
+
+plugins:
+  - serverless-prune-plugin
+
+custom:
+  prune:
+    automatic: true
+    number: 2  
