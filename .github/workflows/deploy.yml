@@ -48,7 +48,7 @@ jobs:
       - name: Package Lambda Function
         run: serverless package --package .serverless
 
-      - name: Deploy to AWS Lambda
+      - name: Deploy with Serverless
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
