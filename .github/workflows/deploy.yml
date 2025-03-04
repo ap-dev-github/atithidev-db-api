@@ -46,12 +46,9 @@ jobs:
           echo "MONGO_URI is set to $MONGO_URI"  # Debugging: Print the MONGO_URI value
           cat .env  # Show file contents
 
-      - name: Create Deployment Package (ZIP)
-        run: zip -r my_lambda.zip . -x "node_modules/*" ".git/*" ".github/*" "package-lock.json"
+      - name: Package Lambda Function
+        run: serverless package --package .serverless
 
-      - name: Deploy with Serverless (Using Prebuilt ZIP)
-        env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-        run: serverless deploy --package my_lambda.zip --verbose
+      - name: Deploy to AWS Lambda
+        run: serverless deploy --package .serverless --verbose
 
