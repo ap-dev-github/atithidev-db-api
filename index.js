@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-// ✅ Use MongoDB URI from environment variable
+//  Use MongoDB URI from environment variable
 const MONGO_URI = process.env.MONGO_URI;
 
-// ✅ Define Host & Review Schema
+//  Define Host & Review Schema
 const hostSchema = new mongoose.Schema({
   id: Number,
   city: String,
