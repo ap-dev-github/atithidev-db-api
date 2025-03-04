@@ -39,6 +39,9 @@ jobs:
           npm install -g serverless@3.40.0
           serverless --version  # Debugging: Check installed version
           
+      - name: Installing the prune Plugin 
+        run: npm install serverless-prune-plugin
+    
       - name: Create .env file
         run: |
           echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> .env
