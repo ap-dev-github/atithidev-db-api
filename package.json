@@ -15,16 +15,20 @@
     "mongodb-memory-server": "^10.1.4",
     "serverless": "^3.40.0",
     "serverless-offline": "^13.9.0",
-    "serverless-plugin-typescript": "^2.1.5",
+    "serverless-prune-plugin": "^2.1.0",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.6",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.26.0"
   },
   "scripts": {
+  
     "lint": "eslint . --ext .ts,.js",
-    "test": "jest --coverage",
-    "build": "tsc",
-    "start": "node dist/index.js"
+      "test": "jest --coverage",
+      "build": "tsc",
+      "start": "node dist/index.js",
+      "clear-testing-dependencies": "npm uninstall serverless-offline supertest ts-jest @types/jest @types/semver @types/supertest eslint globals jest mongodb-memory-server serverless-prune-plugin",
+      "add-prod-dependencies": "npm rm -rf node_modules && npm install --production",
+      "prune": "serverless prune -n 2"
   }
 }
