@@ -61,6 +61,3 @@ jobs:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         run: serverless deploy --verbose
-
-      - name: Clearing older versions using Prune
-        run: serverless prune --number 1
