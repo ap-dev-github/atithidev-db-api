@@ -44,10 +44,10 @@ functions:
           path: insert_review
           method: post
           cors: true
-
-prune:
-  automatic: true
-  number: 1
+custom:
+  prune:
+    automatic: true
+    number: 1
 
 
   
