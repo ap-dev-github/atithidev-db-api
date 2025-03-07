@@ -7,7 +7,7 @@
   <h2>Overview 📝</h2>
   <p>This is a <strong>Serverless AWS Lambda Function-based API</strong> for the <strong>Atithidev Website</strong>. It provides endpoints to manage hosts and reviews using <strong>MongoDB Atlas</strong> as the database. The API is deployed using the <strong>Serverless Framework</strong> with <strong>CI/CD automation</strong>.</p>
 
-  <h2>Features ✨</h2>
+  <h2> Features ✨</h2>
   <ul>
     <li><strong>Fetch hosts and reviews</strong> 🗂️</li>
     <li><strong>Insert new reviews</strong> 📝</li>
@@ -15,6 +15,7 @@
     <li><strong>Uses MongoDB Atlas as the database</strong> 🗄️</li>
     <li><strong>CI/CD automation with GitHub Actions</strong> 🤖</li>
     <li><strong>ESLint integration for code quality enforcement</strong> ✅</li>
+    <li><strong>Automated old version cleanup from AWS S3 with Serverless Prune Plugin ✅ </li>
   </ul>
 
   <h2>CI/CD Integration 🤖</h2>
@@ -27,6 +28,7 @@
     <li><strong>Dependency Installation:</strong> 📦 Only production dependencies (<code>--production</code> flag) are installed to optimize the deployment package.</li>
     <li><strong>Deployment:</strong> 🚀 The <strong>Serverless Framework</strong> deploys the application to <strong>AWS Lambda</strong> if all checks pass.</li>
     <li><strong>Secure Credentials:</strong> 🔐 AWS credentials (<code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>) are securely managed using <strong>GitHub Secrets</strong>.</li>
+    <li><strong>Pruning Old Versions: 🧹 The Serverless Prune Plugin is installed as a dependency and runs automatically to remove outdated versions from AWS S3, optimizing storage and cost.</strong>.</li>
   </ol>
 
   <h4>Benefits of CI/CD Automation:</h4>

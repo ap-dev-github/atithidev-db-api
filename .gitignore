@@ -1,36 +1,39 @@
-# Ignore Node.js dependencies
+# Node.js dependencies
 node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
 
+# TypeScript build output
+dist/
+coverage/
+*.tsbuildinfo
 
-# Ignore Serverless build artifacts
+# Serverless files
 .serverless/
 .serverless-offline/
-.sls-next/
-.sls-build/
 
-# Ignore environment variables (never commit secrets!)
+# Environment variables
 .env
-.env.local
-.env.production
-.env.test
 
-# Ignore log files
+# Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-# Ignore OS-specific files
-.DS_Store
-Thumbs.db
-
-# Ignore IDE/editor files
+# IDE / Editor settings
 .vscode/
 .idea/
-*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
-#  Ignore coverage/test files
-coverage/
-.nyc_output/
-jest/
+# Jest cache
+jest-cache/
+jest-coverage/
+
+# Ignore undefined folder (might be accidental)
+undefined/

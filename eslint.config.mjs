@@ -1,14 +1,13 @@
 import globals from "globals";
-import js from "@eslint/js";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
 
-/** @type {import('eslint').Linter.Config} */
-export default {
-  files: ["**/*.js"], //Apply ESLint to all JS files
-  languageOptions: {
-    sourceType: "commonjs", // You're using CommonJS
-    globals: {
-      ...globals.node, // Enables Node.js globals like `process`
-    },
-  },
-  ...js.configs.recommended, 
-};
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  {files: ["**/*.{js,mjs,cjs,ts}"]},
+  {files: ["**/*.js"], languageOptions: {sourceType: "script"}},
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  {ignores: ["dist/", "node_modules/", "__tests__/", "coverage/"]}
+];

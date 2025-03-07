@@ -1,10 +1,35 @@
-const mongoose = require("mongoose");
+import mongoose, { Schema, Document } from "mongoose";
 
-//  Use MongoDB URI from environment variable
-const MONGO_URI = process.env.MONGO_URI;
+// TypeScript Interfaces for MongoDB Models
+interface IHost extends Document {
+  id: number;
+  city: string;
+  state: string;
+  address: string;
+  zip: string;
+  lat: string;
+  long: string;
+  short_name: string;
+  full_name: string;
+  phone: string;
+}
 
-//  Define Host & Review Schema
-const hostSchema = new mongoose.Schema({
+interface IReview extends Document {
+  id: number;
+  name: string;
+  host: number;
+  review: string;
+  visit: boolean;
+  visit_date: string;
+  room: string;
+  amenities: string;
+}
+
+// MongoDB URI from environment
+const MONGO_URI: string = process.env.MONGO_URI || "";
+
+// ✅ Define Schemas with TypeScript
+const hostSchema: Schema = new Schema<IHost>({
   id: Number,
   city: String,
   state: String,
@@ -14,10 +39,10 @@ const hostSchema = new mongoose.Schema({
   long: String,
   short_name: String,
   full_name: String,
-  phone: String
+  phone: String,
 });
 
-const reviewSchema = new mongoose.Schema({
+const reviewSchema: Schema = new Schema<IReview>({
   id: Number,
   name: String,
   host: Number,
@@ -25,15 +50,15 @@ const reviewSchema = new mongoose.Schema({
   visit: Boolean,
   visit_date: String,
   room: String,
-  amenities: String
+  amenities: String,
 });
 
-// ✅ Create Models
-const Hosts = mongoose.model("Hosts", hostSchema);
-const Reviews = mongoose.model("Reviews", reviewSchema);
+// Create Models
+const Hosts = mongoose.model<IHost>("Hosts", hostSchema);
+const Reviews = mongoose.model<IReview>("Reviews", reviewSchema);
 
-// ✅ Connect to MongoDB (only once)
-async function connectDB() {
+// Connect to MongoDB
+async function connectDB(): Promise<void> {
   if (mongoose.connection.readyState === 0) {
     await mongoose.connect(MONGO_URI, {
       serverSelectionTimeoutMS: 30000,
@@ -42,18 +67,22 @@ async function connectDB() {
   }
 }
 
-// ✅ Lambda Handler Function
-exports.handler = async (event) => {
+// Define Type for API Responses
+interface APIGatewayEvent {
+  path: string;
+  httpMethod: string;
+  body?: string;
+}
+
+// Lambda Handler Function
+export const handler = async (event: APIGatewayEvent) => {
   console.log("🚀 Lambda function triggered", event);
 
   await connectDB();
 
   try {
     if (event.path === "/") {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "Welcome to Mongoose API! 🔥" }),
-      };
+      return { statusCode: 200, body: JSON.stringify({ message: "Welcome to Mongoose API! 🔥" }) };
     }
 
     if (event.path === "/fetchHosts") {
@@ -68,7 +97,7 @@ exports.handler = async (event) => {
     }
 
     if (event.path.startsWith("/fetchHost/") && event.httpMethod === "GET") {
-      const id = parseInt(event.path.split("/").pop(), 10);
+      const id = parseInt(event.path.split("/").pop()!, 10);
       const host = await Hosts.findOne({ id });
       if (!host) {
         return { statusCode: 404, body: JSON.stringify({ error: "Host not found!" }) };
@@ -77,9 +106,9 @@ exports.handler = async (event) => {
     }
 
     if (event.path === "/insert_review" && event.httpMethod === "POST") {
-      const data = JSON.parse(event.body);
+      const data = JSON.parse(event.body!);
       const lastReview = await Reviews.find().sort({ id: -1 }).limit(1);
-      let new_id = lastReview.length ? lastReview[0].id + 1 : 1;
+      const new_id = lastReview.length ? lastReview[0].id + 1 : 1;
 
       const review = new Reviews({
         id: new_id,
@@ -97,7 +126,6 @@ exports.handler = async (event) => {
     }
 
     return { statusCode: 404, body: JSON.stringify({ error: "Route not found" }) };
-
   } catch (error) {
     console.error("❌ Error:", error);
     return { statusCode: 500, body: JSON.stringify({ error: "Internal Server Error" }) };
