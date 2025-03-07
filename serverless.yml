@@ -13,12 +13,9 @@ package:
   exclude:
     - .git/**
     - .gitignore
-    - .serverless/**
     - __tests__/**
     - README.md
-    - package-lock.json
   
-
 functions:
   api:
     handler: dist/index.handler
