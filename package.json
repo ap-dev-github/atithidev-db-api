@@ -28,6 +28,6 @@
       "build": "tsc",
       "start": "node dist/index.js",
       "clear-testing-dependencies": "npm uninstall serverless-offline supertest ts-jest @types/jest @types/semver @types/supertest eslint globals jest mongodb-memory-server serverless-prune-plugin",
-      "add-prod-dependencies": "npm rm -rf node_modules && npm install --production",
+      "add-prod-dependencies": "npm rm -rf node_modules && npm install --production"
   }
 }
