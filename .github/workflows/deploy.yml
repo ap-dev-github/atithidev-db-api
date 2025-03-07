@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 18  
 
-      - name: Install npm dependencies
+      - name: Install all dependencies
         run: npm install  
 
       - name: Configure AWS Credentials
@@ -38,23 +38,25 @@ jobs:
       - name: Run Jest tests
         run: npm test  
 
-      - name: Install only production dependencies
-        run: npm ci --only=production  
+      - name: Clear Up Testing Dependencies
+        run:  npm run clear-testing-dependencies
 
       - name: Install Serverless Framework
         run: |
           npm install -g serverless@3.40.0
           serverless --version  # Debugging: Check installed version
           
-      - name: Installing the prune Plugin 
-        run: npm install serverless-prune-plugin
-          
+      - name: Install only Production Dependencies
+        run: npm run add-prod-dependencies
+   
       - name: Create .env file
         run: |
           echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> .env
           echo "SERVERLESS_ACCESS_KEY=${{ secrets.SERVERLESS_ACCESS_KEY }}" >> .env
           echo "MONGO_URI is set to $MONGO_URI"  # Debugging: Print the MONGO_URI value
           cat .env  # Show file contents
+      - name: Pruning 
+        run: npm prune --omit=dev
         
       - name: Deploy with Serverless
         env:
