@@ -1,0 +1,59 @@
+service: mongoose-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  memorySize: 128
+  timeout: 30
+  environment:
+    MONGO_URI: $(env.MONGO_URI)
+
+package:
+  exclude:
+    - node_modules/**
+    - .git/**
+    - .gitignore
+    - .serverless/**
+    - tests/**
+    - README.md
+    - package-lock.json
+  
+
+functions:
+  api:
+    handler: dist/index.handler
+    url:  
+      authType: NONE  
+      cors: true
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true  # Enables CORS
+      - http:
+          path: fetchHosts
+          method: get
+          cors: true
+      - http:
+          path: fetchHosts/{state}
+          method: get
+          cors: true
+      - http:
+          path: fetchHost/{id}
+          method: get
+          cors: true
+      - http:
+          path: insert_review
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline 
+
+  
+
+custom:
+  prune:
+    automatic: true
+    number: 2  
