@@ -63,4 +63,4 @@ jobs:
         run: serverless deploy --verbose
 
       - name: Clearing older versions using Prune
-        run: npm run prune
+        run: serverless prune --number 1
