@@ -15,7 +15,6 @@ package:
     - .gitignore
     - __tests__/**
     - node_modules/**
-    - .serverless/**
     - README.md
   
 functions:
