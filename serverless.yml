@@ -45,6 +45,8 @@ functions:
           method: post
           cors: true
 
+plugin:
+  - serverless-prune-plugin
 
 
   
