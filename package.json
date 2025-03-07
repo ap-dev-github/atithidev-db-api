@@ -29,6 +29,6 @@
       "start": "node dist/index.js",
       "clear-testing-dependencies": "npm uninstall serverless-offline supertest ts-jest @types/jest @types/semver @types/supertest eslint globals jest mongodb-memory-server serverless-prune-plugin",
       "add-prod-dependencies": "npm rm -rf node_modules && npm install --production",
-      "prune": "serverless prune -n 1"
+      "prune": "npm install serverless-prune-plugin --save-dev && serverless prune -n 1 "
   }
 }
