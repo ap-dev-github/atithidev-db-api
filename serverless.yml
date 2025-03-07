@@ -11,11 +11,10 @@ provider:
 
 package:
   exclude:
-    - node_modules/**
     - .git/**
     - .gitignore
     - .serverless/**
-    - tests/**
+    - __tests__/**
     - README.md
     - package-lock.json
   
@@ -48,12 +47,6 @@ functions:
           method: post
           cors: true
 
-plugins:
-  - serverless-offline 
+
 
   
-
-custom:
-  prune:
-    automatic: true
-    number: 2  
