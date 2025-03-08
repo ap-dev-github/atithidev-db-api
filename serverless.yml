@@ -14,6 +14,7 @@ package:
     - .git/**
     - .gitignore
     - __tests__/**
+    - node_modules/**
     - README.md
     - jest.config.cjs
     - .github/**
