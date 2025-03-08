@@ -19,7 +19,6 @@ package:
     - jest.config.cjs
     - .github/**
     - eslint.config.mjs
-    - build/**
     - index.ts
     - tsconfig.json 
 
