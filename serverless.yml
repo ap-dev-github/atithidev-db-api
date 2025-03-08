@@ -19,11 +19,10 @@ package:
     - jest.config.cjs
     - .github/**
     - eslint.config.mjs
-    - .serverless/**
     - build/**
     - index.ts
     - tsconfig.json 
-    
+
   
 functions:
   api:
