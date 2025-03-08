@@ -53,7 +53,7 @@ cd atithidev-db-api</code></pre>
 <pre><code>npx serverless deploy</code></pre>
 
 <h3>5. YML workflow 
-<pre><code></code></pre>
+<pre><coding>
 
 
 <h2>Endpoints 🌐</h2>
