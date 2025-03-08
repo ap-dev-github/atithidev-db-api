@@ -19,8 +19,7 @@ package:
     - jest.config.cjs
     - .github/**
     - eslint.config.mjs
-    - index.ts
-    - tsconfig.json 
+   
 
   
 functions:
@@ -55,6 +54,7 @@ functions:
 plugins:
 - serverless-dotenv-plugin
 - serverless-prune-plugin
+- serverless-offline
   
 custom:
   prune:
