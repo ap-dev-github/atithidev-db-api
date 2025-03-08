@@ -52,10 +52,6 @@ cd atithidev-db-api</code></pre>
 <h3>5. Deploy to AWS Lambda 🚀</h3>
 <pre><code>npx serverless deploy</code></pre>
 
-<h3>5. YML workflow 
-<pre><coding>
-
-
 <h2>Endpoints 🌐</h2>
 <table>
     <tr>
