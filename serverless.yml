@@ -54,7 +54,6 @@ functions:
 plugins:
 - serverless-dotenv-plugin
 - serverless-prune-plugin
-- serverless-offline
   
 custom:
   prune:
