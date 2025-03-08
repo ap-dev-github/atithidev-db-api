@@ -21,6 +21,7 @@ package:
     - tsconfig.json
     - .build/**
     - index.ts
+    - node_modules/** 
 
 
 functions:
