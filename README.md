@@ -85,7 +85,7 @@ npx serverless deploy
 | POST      | `/insert_review`     | Insert a new review                     |
 
 
-## 👨‍💻Creator and Contributor
+## 👨‍💻Creator and Maintainer
 ### Ayush Pandey
 
 [🔗 Connect on LinkedIn](https://www.linkedin.com/in/linkedap/)  
