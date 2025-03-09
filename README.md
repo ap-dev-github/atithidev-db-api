@@ -51,7 +51,6 @@
 - ✅ **Code Quality Enforcement** – Integrates ESLint into CI/CD to maintain high-quality code.
 - ✅ **Secure Key Management** – Uses GitHub Secrets Manager to protect API keys and environment variables.
 - ✅ **Database Security** – MongoDB Atlas is secured with **IP whitelisting**, restricting unauthorized access.
-- ✅ **AWS Cognito Authentication** – User authentication is managed via AWS Cognito, ensuring **secure access control**.
 
 ---
 
