@@ -60,19 +60,19 @@
 ```sh
 git clone https://github.com/ap-dev-github/atithidev-db-api.git
 ```
-###2️⃣ Install Dependencies 📦
+### 2️⃣ Install Dependencies 📦
 ```sh
 npm install
 ```
-###3️⃣ Environment Variables 🔑
+### 3️⃣ Environment Variables 🔑
 ```sh
 MONGO_URI=your-mongodb-connection-string
 ```
-###4️⃣ Run Locally with Serverless Offline 🖥️
+### 4️⃣ Run Locally with Serverless Offline 🖥️
 ```sh
 npx serverless offline
 ```
-###5️⃣ Deploy to AWS Lambda 🚀
+### 5️⃣ Deploy to AWS Lambda 🚀
 ```sh
 npx serverless deploy
 ```
