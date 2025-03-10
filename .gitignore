@@ -35,5 +35,6 @@ yarn-error.log*
 jest-cache/
 jest-coverage/
 
-# Ignore undefined folder (might be accidental)
+# Ignore other folder (might be accidental)
 undefined/
+.build/
