@@ -87,7 +87,7 @@ npx serverless deploy
 | GET       | `/fetchHosts`        | Fetch all hosts                         |
 | GET       | `/fetchHosts/:state` | Fetch hosts by state                    |
 | POST      | `/insert_review`     | Insert a new review                     |
-
+  GET       | `/fetchHost/:id`     | Fetch host detail by id                 |
 
 ## 👨‍💻Creator and Maintainer
 ### Ayush Pandey
