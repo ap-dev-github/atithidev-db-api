@@ -1,3 +1,7 @@
+🚨 **Note:** This project is licensed under **CC BY-NC-ND 4.0**  
+👉 **No commercial use, modifications, or redistribution allowed.**  
+See [LICENSE](./LICENSE) for details.
+
 # Overview 🔍
 
 ## **Atithidev DB API – Scalable & Cost-Optimized Serverless Backend**
