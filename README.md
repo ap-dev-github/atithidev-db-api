@@ -90,8 +90,8 @@ npx serverless deploy
   GET       | `/fetchHost/:id`     | Fetch host detail by id                 |
 
 ## 👨‍💻Creator and Maintainer
-### Ayush Pandey
 
+### Ayush Pandey
 [🔗 Connect on LinkedIn](https://www.linkedin.com/in/linkedap/)  
 
-📧 **Email:** [ayushpandey.cs@gmail.com](mailto:ayushpandey.cs@gmail.com)  
+📧 **Email:**[ayushpandey.cs@gmail.com](mailto:ayushpandey.cs@gmail.com)  
