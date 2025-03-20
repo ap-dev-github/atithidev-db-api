@@ -34,7 +34,6 @@
 - **Jest** for API endpoint testing ✅
 - **Rate limiting** to prevent abuse ⚖️
 - **Logging and monitoring** with AWS CloudWatch 📊
-
 ---
 
 ## 🛠️ Tech Stack
@@ -44,7 +43,6 @@
 - **AWS Lambda** (Serverless Compute) ⚡
 - **AWS API Gateway**
 - **Serverless Framework**
-
 ---
 
 ## 🔐 Security Features
@@ -86,8 +84,7 @@ npx serverless deploy
   GET       | `/fetchHost/:id`     | Fetch host detail by id                 |
 
 ## 👨‍💻Creator and Maintainer
+## Ayush Pandey
 
-### Ayush Pandey
 [🔗 Connect on LinkedIn](https://www.linkedin.com/in/linkedap/)  
-
 📧 **Email:**[ayushpandey.cs@gmail.com](mailto:ayushpandey.cs@gmail.com)  
